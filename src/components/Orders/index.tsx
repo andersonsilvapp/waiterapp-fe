@@ -17,11 +17,16 @@ export function Orders() {
 
     socket.on('orders@new', (order) => {
       setOrders(prevState => prevState.concat(order));
+      console.log(order);
     });
+
+    return () => {
+      socket.off();
+    };
   }, []);
 
   useEffect(() => {
-    api.get('/orders').then(( { data }) => {
+    api.get('/orders').then(({ data }) => {
       setOrders(data);
     });
   }, []);
