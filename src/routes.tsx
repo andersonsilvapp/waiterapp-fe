@@ -5,16 +5,16 @@ import { Login } from './pages/Login';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <div>Home</div>
+    element: <div>Home</div>,
   },
   {
     path: '/login',
-    element: <Login />
+    element: <Login />,
   },
   {
     path: '/orders',
-    element: <TableOrders />
-  }
+    element: <TableOrders />,
+  },
 ]);
 
 export function Routes() {

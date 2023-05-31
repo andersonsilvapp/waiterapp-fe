@@ -11,23 +11,23 @@ import { Container, Form } from './styles';
 export function Login() {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   }
 
-  async function  handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     console.log(formData);
 
     try {
-      const response = await api.post('/auth/login', formData );
+      const response = await api.post('/auth/login', formData);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -37,13 +37,12 @@ export function Login() {
   return (
     <>
       <Container>
-        <div className='left-side'>
+        <div className="left-side">
           <div className="img-container">
             <img src={illustration} />
-
           </div>
         </div>
-        <div className='right-side'>
+        <div className="right-side">
           <div className="title">
             <span>Login to your account</span>
             <h1>Welcome back!</h1>
@@ -51,19 +50,19 @@ export function Login() {
 
           <Form onSubmit={handleSubmit}>
             <Input
-              placeholder='Email Address'
+              placeholder="Email Address"
               icon="email"
               name="email"
               onChange={handleChange}
             />
             <Input
-              placeholder='Password'
+              placeholder="Password"
               icon="password"
               name="password"
               onChange={handleChange}
             />
 
-            <Button type='submit'>Login</Button>
+            <Button type="submit">Login</Button>
           </Form>
         </div>
       </Container>

@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const Overlay = styled.div`
   left: 0;
   top: 0;
-  background: rgba(0,0,0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(4.5px);
   width: 100%;
   height: 100%;
@@ -50,16 +50,15 @@ export const ModalBody = styled.div`
       align-items: center;
     }
   }
-
 `;
 
 export const OrderDetails = styled.div`
   margin-top: 32px;
 
   > strong {
-      font-weight: 500;
-      font-size: 14px;
-      opacity: 0.8;
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 0.8;
   }
 
   .order-items {
@@ -138,7 +137,7 @@ export const Actions = styled.footer`
 
   .secondary {
     padding: 12px 24px;
-    color: #D73835;
+    color: #d73835;
     font-weight: bold;
     border: 0;
     background: transparent;

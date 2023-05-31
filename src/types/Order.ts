@@ -9,6 +9,6 @@ export interface Order {
       name: string;
       imagePath: string;
       price: number;
-    }
+    };
   }[];
 }

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const Container = styled.div`
-  border: 1px solid #E5E5E5;
+  border: 1px solid #e5e5e5;
   padding: 17px 30px;
   border-radius: 40px;
   display: flex;
@@ -27,5 +27,4 @@ export const Container = styled.div`
   input:focus-visible {
     outline: none;
   }
-
 `;

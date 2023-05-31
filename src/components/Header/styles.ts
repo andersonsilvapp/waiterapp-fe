@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-  background: #D73035;
+  background: #d73035;
   display: flex;
   justify-content: center;
   height: 198px;
@@ -15,8 +15,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  .page-details  {
-
+  .page-details {
     h1 {
       color: #fff;
       font-size: 32px;
@@ -28,7 +27,6 @@ export const Content = styled.div`
       font-size: 16px;
       opacity: 0.9;
       margin-top: 6px;
-
     }
   }
 `;

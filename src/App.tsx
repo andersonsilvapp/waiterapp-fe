@@ -10,9 +10,9 @@ import { theme } from './styles/theme';
 export function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles/>
+      <GlobalStyles />
       <Routes />
-      <ToastContainer position='bottom-center' />
+      <ToastContainer position="bottom-center" />
     </ThemeProvider>
   );
 }

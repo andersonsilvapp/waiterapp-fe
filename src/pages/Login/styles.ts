@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 export const Container = styled.main`
-  width: 100Vw;
-  height: 100Vh;
+  width: 100vw;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 60px;
@@ -33,7 +33,7 @@ export const Container = styled.main`
 
   .left-side {
     padding: 68px 70px 0;
-    border-right: 1px solid #E5E5E5;
+    border-right: 1px solid #e5e5e5;
     display: flex;
     max-width: 100%;
 
@@ -68,5 +68,3 @@ export const Form = styled.form`
   gap: 40px;
   max-width: 460px;
 `;
-
-

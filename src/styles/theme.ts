@@ -5,9 +5,9 @@ export const theme = {
     white: '#fff',
     grey: {
       900: '#222222',
-      500: '#ababab'
+      500: '#ababab',
     },
     green: '#2EA875',
-    red: '#FF4752'
+    red: '#FF4752',
   },
 };

@@ -21,7 +21,7 @@ export function OrderModal({
   onClose,
   onCancelOrder,
   isLoading,
-  onChangeOrderStatus
+  onChangeOrderStatus,
 }: OrderModalProps) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -42,7 +42,7 @@ export function OrderModal({
   }
 
   const total = order.products.reduce((total, { product, quantity }) => {
-    return total + (product.price * quantity);
+    return total + product.price * quantity;
   }, 0);
 
   return (
@@ -51,7 +51,7 @@ export function OrderModal({
         <header>
           <strong>Mesa {order.table}</strong>
 
-          <button type='button' onClick={onClose}>
+          <button type="button" onClick={onClose}>
             <img src={closeIcon} alt="Icone de fechamento" />
           </button>
         </header>
@@ -78,7 +78,7 @@ export function OrderModal({
           <strong>Itens</strong>
 
           <div className="order-items">
-            {order.products.map(({_id, product, quantity}) => (
+            {order.products.map(({ _id, product, quantity }) => (
               <div className="item" key={_id}>
                 <img
                   src={`http://localhost:3001/uploads/${product.imagePath}`}
@@ -87,9 +87,7 @@ export function OrderModal({
                   height="28.51"
                 />
 
-                <span className="quantity">
-                  {quantity}x
-                </span>
+                <span className="quantity">{quantity}x</span>
 
                 <div className="product-details">
                   <strong>{product.name}</strong>
@@ -103,17 +101,15 @@ export function OrderModal({
             <span>Total</span>
             <strong>{formatCurrency(total)}</strong>
           </div>
-
         </OrderDetails>
 
         <Actions>
           {order.status !== 'DONE' && (
             <button
               type="button"
-              className='primary'
+              className="primary"
               disabled={isLoading}
-              onClick={onChangeOrderStatus}
-            >
+              onClick={onChangeOrderStatus}>
               <span>
                 {order.status === 'WAITING' && '🧑‍🍳'}
                 {order.status === 'IN_PRODUCTION' && '✅'}
@@ -127,10 +123,9 @@ export function OrderModal({
 
           <button
             type="button"
-            className='secondary'
+            className="secondary"
             onClick={onCancelOrder}
-            disabled={isLoading}
-          >
+            disabled={isLoading}>
             <strong>Cancelar pedido</strong>
           </button>
         </Actions>

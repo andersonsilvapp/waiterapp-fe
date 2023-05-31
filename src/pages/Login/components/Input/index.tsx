@@ -6,7 +6,7 @@ import emailIcon from '../../../../assets/images/Mail.svg';
 import passwordIcon from '../../../../assets/images/Lock.svg';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  icon: 'email' | 'password'
+  icon: 'email' | 'password';
 }
 
 export function Input({ icon, ...props }: InputProps) {
@@ -14,8 +14,8 @@ export function Input({ icon, ...props }: InputProps) {
 
   return (
     <Container>
-      <i style={{ backgroundImage: `url(${inputIcon})`}}/>
-      <input type='text' {...props} />
+      <i style={{ backgroundImage: `url(${inputIcon})` }} />
+      <input type="text" {...props} />
     </Container>
   );
 }
