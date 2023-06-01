@@ -4,15 +4,18 @@ import { ThemeProvider } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { GlobalStyles } from './styles/GlobalStyles';
-import { Routes } from './routes';
 import { theme } from './styles/theme';
+import { AuthProvider } from './Context/AuthContext';
+import { Router } from './routes/index.routes';
 
 export function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Routes />
-      <ToastContainer position="bottom-center" />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Router />
+        <ToastContainer position="bottom-center" />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
