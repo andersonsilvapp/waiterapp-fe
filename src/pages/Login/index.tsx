@@ -1,7 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 import illustration from '../../assets/images/illustration.png';
-import { api } from '../../utils/api';
 
 import { Input } from './components/Input';
 import { Button } from '../../components/Button';
@@ -14,6 +16,11 @@ export function Login() {
     password: '',
   });
 
+  const { authenticated, signIn } = useAuthContext();
+  const navigate = useNavigate();
+
+  const buttonDisabled = !formData.email || !formData.password;
+
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setFormData((prevState) => ({
       ...prevState,
@@ -24,15 +31,14 @@ export function Login() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    console.log(formData);
-
-    try {
-      const response = await api.post('/auth/login', formData);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    await signIn(formData);
   }
+
+  useEffect(() => {
+    if (authenticated) {
+      navigate('/');
+    }
+  }, [authenticated]);
 
   return (
     <>
@@ -53,16 +59,22 @@ export function Login() {
               placeholder="Email Address"
               icon="email"
               name="email"
+              type="text"
               onChange={handleChange}
+              value={formData.email}
             />
             <Input
               placeholder="Password"
               icon="password"
               name="password"
+              type="password"
               onChange={handleChange}
+              value={formData.password}
             />
 
-            <Button type="submit">Login</Button>
+            <Button type="submit" disabled={buttonDisabled}>
+              Login
+            </Button>
           </Form>
         </div>
       </Container>

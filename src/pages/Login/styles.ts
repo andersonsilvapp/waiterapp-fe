@@ -10,9 +10,12 @@ export const Container = styled.main`
   align-items: center;
 
   .right-side {
-    max-width: 100%;
-    padding-left: 96px;
+    width: 100%;
+    min-width: 340px;
     display: flex;
+    padding: 0 30px;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     gap: 45px;
 
@@ -32,14 +35,16 @@ export const Container = styled.main`
   }
 
   .left-side {
-    padding: 68px 70px 0;
     border-right: 1px solid #e5e5e5;
     display: flex;
-    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 
     .img-container {
-      min-width: 400px;
-      max-width: 100%;
+      max-width: 500px;
+      min-width: 300px;
+      margin-right: 40px;
 
       img {
         width: 100%;
@@ -51,18 +56,20 @@ export const Container = styled.main`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    padding: 20px;
 
     .left-side {
       display: none;
     }
 
     .right-side {
-      padding-left: 0;
+      padding: 0;
     }
   }
 `;
 
 export const Form = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 40px;

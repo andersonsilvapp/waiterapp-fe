@@ -21,7 +21,7 @@ export const Container = styled.div`
   input {
     border: none;
     background: transparent;
-    width: 100%;
+    width: 80%;
   }
 
   input:focus-visible {
