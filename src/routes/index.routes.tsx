@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes as NavigationRoutes } from 'react-router-dom';
 
 import { useAuthContext } from '../hooks/useAuthContext';
 
@@ -6,24 +6,25 @@ import { PrivateRoute } from './private.routes';
 
 import { TableOrders } from '../pages/TableOrders';
 import { Login } from '../pages/Login';
-import { Home } from '../pages/Home';
+import { Main } from '../pages/Main';
+import { Loading } from '../components/Loading';
+import { Layout } from '../pages/Layout';
 
-export function Router() {
+export function Routes() {
   const { loading } = useAuthContext();
 
-  if (loading) {
-    return <h1>loading...</h1>;
-  }
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
+    <>
+      <Loading isLoading={loading} overlay />
+      <NavigationRoutes>
         <Route element={<PrivateRoute />}>
-          <Route path="/:id" element={<Home />} />
-          <Route path="/orders" element={<TableOrders />} />
+          <Route element={<Layout />}>
+            <Route path="/main" element={<Main />} />
+            <Route path="/orders" element={<TableOrders />} />
+          </Route>
         </Route>
-      </Routes>
-    </BrowserRouter>
+        <Route path="/login" element={<Login />} />
+      </NavigationRoutes>
+    </>
   );
 }
