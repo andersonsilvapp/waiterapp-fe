@@ -6,9 +6,12 @@ interface AuthProviderProps {
 }
 
 interface AuthContextData {
-  token: string;
   authenticated: boolean;
-  signIn: (formData: { email: string; password: string }) => Promise<void>;
+  signIn: (
+    email: string,
+    password: string,
+    callback: VoidFunction
+  ) => Promise<void>;
   loading: boolean;
   signOut: () => void;
 }
@@ -16,11 +19,10 @@ interface AuthContextData {
 const AuthContext = createContext({} as AuthContextData);
 
 function AuthProvider({ children }: AuthProviderProps) {
-  const { token, authenticated, signIn, loading, signOut } = useAuth();
+  const { authenticated, signIn, loading, signOut } = useAuth();
 
   return (
-    <AuthContext.Provider
-      value={{ token, authenticated, signIn, loading, signOut }}>
+    <AuthContext.Provider value={{ authenticated, signIn, loading, signOut }}>
       {children}
     </AuthContext.Provider>
   );
