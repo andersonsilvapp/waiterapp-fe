@@ -1,5 +1,5 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 
@@ -11,18 +11,21 @@ import { Button } from '../../components/Button';
 import { Container, Form } from './styles';
 
 export function Login() {
-  const [formData, setFormData] = useState({
+  const [data, setData] = useState({
     email: '',
     password: '',
   });
 
-  const { authenticated, signIn } = useAuthContext();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { signIn } = useAuthContext();
 
-  const buttonDisabled = !formData.email || !formData.password;
+  const from = location.state?.from.pathname || '/main';
+
+  const buttonDisabled = !data.email || !data.password;
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setFormData((prevState) => ({
+    setData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -31,14 +34,10 @@ export function Login() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    await signIn(formData);
-  }
+    const { email, password } = data;
 
-  useEffect(() => {
-    if (authenticated) {
-      navigate('/');
-    }
-  }, [authenticated]);
+    await signIn(email, password, () => navigate(from, { replace: true }));
+  }
 
   return (
     <>
@@ -61,7 +60,7 @@ export function Login() {
               name="email"
               type="text"
               onChange={handleChange}
-              value={formData.email}
+              value={data.email}
             />
             <Input
               placeholder="Password"
@@ -69,7 +68,7 @@ export function Login() {
               name="password"
               type="password"
               onChange={handleChange}
-              value={formData.password}
+              value={data.password}
             />
 
             <Button type="submit" disabled={buttonDisabled}>
