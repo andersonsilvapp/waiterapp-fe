@@ -1,8 +1,14 @@
 import { styled } from 'styled-components';
 
-export const Container = styled.button`
+export type Colors = 'primary' | 'red' | 'green';
+interface ButtonStyle {
+  color?: Colors;
+}
+
+export const Container = styled.button<ButtonStyle>`
   width: 100%;
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme, color }) =>
+    color ? theme.colors[color] : theme.colors.primary};
   border: none;
   padding: 17px 0;
   color: #fff;

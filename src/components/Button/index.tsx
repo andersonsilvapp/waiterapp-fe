@@ -3,8 +3,13 @@ import { Container } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
+  color?: 'primary' | 'red' | 'green';
 }
 
-export function Button({ children, ...props }: ButtonProps) {
-  return <Container {...props}>{children}</Container>;
+export function Button({ color, children, ...props }: ButtonProps) {
+  return (
+    <Container color={color} {...props}>
+      {children}
+    </Container>
+  );
 }
