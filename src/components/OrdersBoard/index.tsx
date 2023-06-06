@@ -41,7 +41,7 @@ export function OrdersBoard({
     const status =
       selectedOrder?.status === 'WAITING' ? 'IN_PRODUCTION' : 'DONE';
 
-    await api.patch(`/orders/${selectedOrder?._id}`, { status });
+    await api.patch(`/orders/${selectedOrder?._id}/status`, { status });
 
     toast.success(
       ` O pedido da mesa ${selectedOrder?.table} teve o status alterado!`

@@ -124,7 +124,7 @@ export const Actions = styled.footer`
   }
 
   .primary {
-    background: #333;
+    background: ${({ theme }) => theme.colors.primary};
     border-radius: 48px;
     border: 0;
     color: #fff;
@@ -137,7 +137,7 @@ export const Actions = styled.footer`
 
   .secondary {
     padding: 12px 24px;
-    color: #d73835;
+    color: ${({ theme }) => theme.colors.red};
     font-weight: bold;
     border: 0;
     background: transparent;
