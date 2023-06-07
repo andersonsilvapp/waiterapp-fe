@@ -1,9 +1,13 @@
 export interface Product {
   _id: string;
-  quantity: number;
-  product: {
+  name: string;
+  category: string;
+  isActive: boolean;
+  imagePath: string;
+  price: number;
+  ingredients: {
+    id: string;
     name: string;
-    imagePath: string;
-    price: number;
-  };
+    icon: string;
+  }[];
 }
