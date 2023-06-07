@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 export type Colors = 'primary' | 'red' | 'green';
 interface ButtonStyle {
   color?: Colors;
+  size?: string;
 }
 
 export const Container = styled.button<ButtonStyle>`
@@ -10,7 +11,7 @@ export const Container = styled.button<ButtonStyle>`
   background: ${({ theme, color }) =>
     color ? theme.colors[color] : theme.colors.primary};
   border: none;
-  padding: 17px 0;
+  padding: ${({ size }) => (!size ? '17px' : '12px')} 24px;
   color: #fff;
   font-weight: 600;
   font-size: 18px;
