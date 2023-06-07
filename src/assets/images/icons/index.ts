@@ -7,6 +7,9 @@ import notification from './notification.svg';
 import order from './order.svg';
 import product from './product.svg';
 import setting from './setting.svg';
+import search from './search.svg';
+import edit from './edit.svg';
+import trash from './trash.svg';
 
 export type IconsType =
   | 'logo'
@@ -17,7 +20,10 @@ export type IconsType =
   | 'notification'
   | 'customer'
   | 'message'
-  | 'setting';
+  | 'setting'
+  | 'search'
+  | 'edit'
+  | 'trash';
 
 export const icons = {
   customer,
@@ -29,4 +35,7 @@ export const icons = {
   order,
   product,
   setting,
+  search,
+  edit,
+  trash,
 };
