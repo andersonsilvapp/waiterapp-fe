@@ -10,6 +10,8 @@ import setting from './setting.svg';
 import search from './search.svg';
 import edit from './edit.svg';
 import trash from './trash.svg';
+import upload from './upload.svg';
+import close from './close.svg';
 
 export type IconsType =
   | 'logo'
@@ -23,7 +25,9 @@ export type IconsType =
   | 'setting'
   | 'search'
   | 'edit'
-  | 'trash';
+  | 'trash'
+  | 'upload'
+  | 'close';
 
 export const icons = {
   customer,
@@ -38,4 +42,6 @@ export const icons = {
   search,
   edit,
   trash,
+  upload,
+  close,
 };
