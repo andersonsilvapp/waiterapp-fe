@@ -10,6 +10,7 @@ import { Main } from '../pages/Main';
 import { Loading } from '../components/Loading';
 import { Layout } from '../pages/Layout';
 import { Products } from '../pages/Products';
+import { CreateProduct } from '../pages/CreateProduct';
 
 export function Routes() {
   const { loading } = useAuthContext();
@@ -23,6 +24,7 @@ export function Routes() {
             <Route path="/main" element={<Main />} />
             <Route path="/orders" element={<TableOrders />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/create" element={<CreateProduct />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />
