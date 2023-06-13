@@ -2,11 +2,17 @@ import { ChangeEvent, useState } from 'react';
 import { Icon } from '../Icon';
 import { Container } from './styles';
 
-export function Upload() {
+interface UploadProps {
+  onChange: (event: File | null) => void;
+}
+
+export function Upload({ onChange }: UploadProps) {
   const [imagePreview, setImagePreview] = useState<string | null>();
 
   function handleChangeImage(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files![0];
+
+    onChange(file);
 
     if (file && file.type.includes('image')) {
       const reader = new FileReader();
@@ -19,6 +25,11 @@ export function Upload() {
     }
   }
 
+  function handleRemoveImage() {
+    setImagePreview('');
+    onChange(null);
+  }
+
   return (
     <Container>
       {imagePreview ? (
@@ -26,19 +37,16 @@ export function Upload() {
           <div>
             <img src={imagePreview} />
           </div>
-          <button
-            type="button"
-            className="close"
-            onClick={() => setImagePreview('')}>
+          <button type="button" className="close" onClick={handleRemoveImage}>
             Remover imagem
           </button>
         </>
       ) : (
-        <label htmlFor="file">
+        <label htmlFor="image">
           <input
             type="file"
-            name="file"
-            id="file"
+            name="image"
+            id="image"
             onChange={handleChangeImage}
           />
           <Icon type="upload" />
