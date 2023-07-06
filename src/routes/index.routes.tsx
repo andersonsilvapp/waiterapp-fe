@@ -11,6 +11,7 @@ import { Loading } from '../components/Loading';
 import { Layout } from '../pages/Layout';
 import { Products } from '../pages/Products';
 import { CreateProduct } from '../pages/CreateProduct';
+import { EditProduct } from '../pages/EditProduct';
 
 export function Routes() {
   const { loading } = useAuthContext();
@@ -25,6 +26,7 @@ export function Routes() {
             <Route path="/orders" element={<TableOrders />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/create" element={<CreateProduct />} />
+            <Route path="/products/edit/:id" element={<EditProduct />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />

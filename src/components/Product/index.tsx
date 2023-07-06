@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Product as ProductInterface } from '../../types/Product';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { Icon } from '../Icon';
@@ -8,11 +9,17 @@ interface ProductProps {
 }
 
 export function Product({ product }: ProductProps) {
+  const navigate = useNavigate();
+
   const productStatus = product.isActive ? (
     <span className="active">Ativo</span>
   ) : (
     <span className="inactive">Inativo</span>
   );
+
+  function handleNavigateEditProduct(productId: string) {
+    navigate(`edit/${productId}`);
+  }
 
   return (
     <Container>
@@ -32,7 +39,9 @@ export function Product({ product }: ProductProps) {
       </td>
       <td>
         <div className="actions">
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => handleNavigateEditProduct(product._id)}>
             <Icon type="edit" />
             <small className="edit">Edit</small>
           </button>
